@@ -47,7 +47,7 @@ public class WifiTetherSecurityPreferenceController extends WifiTetherBasePrefer
     private Map<Integer, String> mSecurityMap = new LinkedHashMap<Integer, String>();
     private int mSecurityValue;
     @VisibleForTesting
-    boolean mIsWpa3Supported = true;
+    boolean mIsWpa3Supported = false;
 
     public WifiTetherSecurityPreferenceController(Context context,
             OnTetherConfigUpdateListener listener) {
