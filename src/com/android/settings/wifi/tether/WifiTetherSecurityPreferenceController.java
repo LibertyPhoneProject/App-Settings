@@ -87,7 +87,7 @@ public class WifiTetherSecurityPreferenceController extends WifiTetherBasePrefer
         }
 
         final int securityType = mWifiManager.getSoftApConfiguration().getSecurityType();
-        mSecurityValue = mSecurityMap.get(securityType) != null
+        mSecurityValue = mSecurityMap.get(securityType) == SoftApConfiguration.SECURITY_TYPE_WPA2_PSK || mSecurityMap.get(securityType) == SoftApConfiguration.SECURITY_TYPE_OPEN
                 ? securityType : SoftApConfiguration.SECURITY_TYPE_WPA2_PSK;
 
         preference.setSummary(mSecurityMap.get(mSecurityValue));
