@@ -87,7 +87,7 @@ public class WifiTetherSecurityPreferenceController extends WifiTetherBasePrefer
         }
 
         final int securityType = mWifiManager.getSoftApConfiguration().getSecurityType();
-        mSecurityValue = ((mSecurityMap.get(securityType) == SoftApConfiguration.SECURITY_TYPE_WPA2_PSK) || (mSecurityMap.get(securityType) == SoftApConfiguration.SECURITY_TYPE_OPEN))
+        mSecurityValue = mSecurityMap.get(securityType) != null
                 ? securityType : SoftApConfiguration.SECURITY_TYPE_WPA2_PSK;
 
         preference.setSummary(mSecurityMap.get(mSecurityValue));
@@ -106,8 +106,7 @@ public class WifiTetherSecurityPreferenceController extends WifiTetherBasePrefer
 
     @Override
     public void onCapabilityChanged(@NonNull SoftApCapability softApCapability) {
-        final boolean isWpa3Supported =
-                softApCapability.areFeaturesSupported(SoftApCapability.SOFTAP_FEATURE_WPA3_SAE);
+        final boolean isWpa3Supported = false;
         if (!isWpa3Supported) {
             Log.i(PREF_KEY, "WPA3 SAE is not supported on this device");
         }
